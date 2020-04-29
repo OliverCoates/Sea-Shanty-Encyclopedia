@@ -1,7 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
 
+/* Colors! https://coolors.co/2a2b2a-dcdcdd-3d5a6c-72a98f-1985a1 */
+:root {
+  --c1: #DCDCDD; /* Soft grey - background color */
+  --c2: #2A2B2A; /* Softish black - Fonts and borders */
+  --c3: #1985A1; /* Navy Blue - Highlights*/
+}
+
 body {
+  background-color: var(--c1);
   font-family: Hind;
+  color: var(--c2);
+}
+
+.title {
+  font-size: 35px;
+  margin: 20px;
 }
 
 .dropdown {
@@ -15,17 +29,24 @@ body {
 }
 
 .btn {
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  color: var(--c2);
   font-size: 20px;
-  background-color: white;
-  border: none;
+  background-color: var(--c1);
+  border-color: rgba(42, 43, 42, 0.75);
+  padding: 5px;
+  width: 150px;
   text-align: left;
   text-decoration: none;
   outline: none;
-  opacity: 0.775;
 }
 
 .btn:hover {
   opacity: 1;
+  color: var(--c3);
+  border-color: var(--c3);
 }
 
 .entry {
