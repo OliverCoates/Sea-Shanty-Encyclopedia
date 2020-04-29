@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
 
-.test {
+body {
   font-family: Hind;
-  font-size: 50px;
+}
+
+.dropdown {
+  font-size: 20px;
 }
