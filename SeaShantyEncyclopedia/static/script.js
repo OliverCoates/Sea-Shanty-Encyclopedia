@@ -1,5 +1,3 @@
-
-
 function dropdown(elementID) {
   var boxID = document.getElementById(elementID);
   //window.alert("Hello");

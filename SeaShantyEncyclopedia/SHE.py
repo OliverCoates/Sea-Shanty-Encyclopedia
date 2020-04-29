@@ -20,3 +20,10 @@ class SeaShanty(db.Model):
 print("")
 print("Database Sucessfully loaded.")
 print("")
+
+@app.route('/', methods=["GET","POST"])
+def home():
+    return render_template("home.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
