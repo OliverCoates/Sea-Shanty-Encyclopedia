@@ -13,7 +13,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
-class SeaShanty(db.Model):
+class seashanties(db.Model):
     ID = db.Column(db.Integer(), primary_key=True,)
     Name = db.Column(db.String(),unique=True)
 
@@ -23,6 +23,15 @@ print("")
 
 @app.route('/', methods=["GET","POST"])
 def home():
+    shantys = None
+    if request.form:
+        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"))
+        print("")
+        print(" Shanties: ", shanty.ID)
+        print("")
+        db.session.add(shanty)
+        db.session.commit()
+    shantys = seashanties.query.all()
     return render_template("home.html")
 
 if __name__ == "__main__":

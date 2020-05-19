@@ -8,6 +8,17 @@
 
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
+
+    <table class="center">
+      {% for shanty in shantys %}
+        <tr>
+          <td>
+            {{shanty.Name}}
+          </td>
+        </tr>
+        {% endfor %}
+    </table>
+
     <div class="entry">
       <button class="btn" onclick="dropdown('box1')">Title</button>
       <div class="dropdown" id="box1">
@@ -19,5 +30,6 @@
         <p class="dropdownText"> Lyrics: </p>
       </div>
     </div>
+
   </body>
 </html>
