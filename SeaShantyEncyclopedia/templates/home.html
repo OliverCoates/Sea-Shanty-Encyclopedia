@@ -9,18 +9,25 @@
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
 
-      {% for shanty in shantys %}
-      <div class="entry">
-        <button class="btn" onclick="dropdown('box1')">{{shanty.Name}}</button>
-          <p> </p>
-          <p class="dropdownText"> Also known as: {{shanty.AltName}}</p>
-          <p class="dropdownText"> Country of origin: {{shanty.Country}}</p>
-          <p class="dropdownText"> Language: {{shanty.Language}}</p>
-          <p class="dropdownText"> Description: {{shanty.Desc}}</p>
-          <p class="dropdownText"> Lyrics: </p>
-      </div>
-      <p> </p>
-      {% endfor %}
+    <input type="text" id="Password" name="Password"><br><br>
+    <div id="AdminPanel" class="AdminPanel">
+      <p> Admin Panel</p>
+      <button onclick="logout()"> Log out </button>
+      <br>
+    </div>
+
+    {% for shanty in shantys %}
+    <div class="entry">
+      <button class="btn" onclick="dropdown('box1')">{{shanty.Name}}</button>
+        <p> </p>
+        <p class="dropdownText"> Also known as: {{shanty.AltName}}</p>
+        <p class="dropdownText"> Country of origin: {{shanty.Country}}</p>
+        <p class="dropdownText"> Language: {{shanty.Language}}</p>
+        <p class="dropdownText"> Description: {{shanty.Desc}}</p>
+        <p class="dropdownText"> Lyrics: </p>
+    </div>
+    <p> </p>
+    {% endfor %}
 
 
 

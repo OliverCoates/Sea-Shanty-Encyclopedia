@@ -28,6 +28,14 @@ body {
   margin:2px;
 }
 
+.AdminInput {
+  display:block;
+}
+
+.AdminPanel {
+  display: none;
+}
+
 .btn {
   border: solid;
   border-width: 2px;
