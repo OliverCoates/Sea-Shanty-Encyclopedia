@@ -9,27 +9,21 @@
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
 
-    <table class="center">
       {% for shanty in shantys %}
-        <tr>
-          <td>
-            {{shanty.Name}}
-          </td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <div class="entry">
-      <button class="btn" onclick="dropdown('box1')">Title</button>
-      <div class="dropdown" id="box1">
-        <p> </p>
-        <p class="dropdownText"> Also known as: </p>
-        <p class="dropdownText"> Country of origin: </p>
-        <p class="dropdownText"> Language: </p>
-        <p class="dropdownText"> Description: </p>
-        <p class="dropdownText"> Lyrics: </p>
+      <div class="entry">
+        <button class="btn" onclick="dropdown('box1')">{{shanty.Name}}</button>
+          <p> </p>
+          <p class="dropdownText"> Also known as: {{shanty.AltName}}</p>
+          <p class="dropdownText"> Country of origin: </p>
+          <p class="dropdownText"> Language: </p>
+          <p class="dropdownText"> Description: {{shanty.Desc}}</p>
+          <p class="dropdownText"> Lyrics: </p>
       </div>
-    </div>
+      <p> </p>
+      {% endfor %}
+
+
+
 
   </body>
 </html>

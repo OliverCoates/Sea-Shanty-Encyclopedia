@@ -16,6 +16,9 @@ db = SQLAlchemy(app)
 class seashanties(db.Model):
     ID = db.Column(db.Integer(), primary_key=True,)
     Name = db.Column(db.String(),unique=True)
+    AltName = db.Column("Alternative_Names",db.String(),unique=True)
+    Desc = db.Column("Description",db.String())
+    #Language = db.Column("Language",db.String(),ForeignKey(Language.Name))
 
 print("")
 print("Database Sucessfully loaded.")
@@ -25,14 +28,10 @@ print("")
 def home():
     shantys = None
     if request.form:
-        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"))
-        print("")
-        print(" Shanties: ", shanty.ID)
-        print("")
+        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"),AltName=request.form.get("Alternative_Names"), Desc=request.form.get("Description"))  # Get the data from the database and add them to the seashanties class
         db.session.add(shanty)
         db.session.commit()
-    shantys = seashanties.query.all()
-    return render_template("home.html")
+    return render_template("home.html", shantys = seashanties.query.all())  # Return the html template
 
 if __name__ == "__main__":
     app.run(debug=True)
