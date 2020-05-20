@@ -18,7 +18,8 @@ class seashanties(db.Model):
     Name = db.Column(db.String(),unique=True)
     AltName = db.Column("Alternative_Names",db.String(),unique=True)
     Desc = db.Column("Description",db.String())
-    #Language = db.Column("Language",db.String(),ForeignKey(Language.Name))
+    Language = db.Column("Language",db.String(),db.ForeignKey("Language.Name"))
+    Country = db.Column("Country_Origin",db.String(), db.ForeignKey("Countries.Name"))
 
 print("")
 print("Database Sucessfully loaded.")
@@ -28,7 +29,7 @@ print("")
 def home():
     shantys = None
     if request.form:
-        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"),AltName=request.form.get("Alternative_Names"), Desc=request.form.get("Description"))  # Get the data from the database and add them to the seashanties class
+        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"),AltName=request.form.get("Alternative_Names"), Desc=request.form.get("Description"),Country=request.form.get("Country"), Language=request.form.get("Language"))  # Get the data from the database and add them to the seashanties class
         db.session.add(shanty)
         db.session.commit()
     return render_template("home.html", shantys = seashanties.query.all())  # Return the html template
