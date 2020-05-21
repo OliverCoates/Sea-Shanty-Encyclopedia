@@ -9,9 +9,34 @@
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
 
-    <input type="text" id="Password" name="Password"><br><br>
+    <input type="text" id="Password" name="Password"><br>
     <div id="AdminPanel" class="AdminPanel">
       <p> Admin Panel</p>
+      <p> Add a new shanty </p>
+      Name: <input type="text" id="new_name" name="new_name">
+      Alternative name: <input type="text" id="new_altName" name="new_altName">
+      Country of Origin: <select name="new_country" id="new_country"> <!-- This is inefficent but i will work for now -->
+        <option value="United Kingdom"> United Kingdom </option>
+        <option value="Germany"> Germany </option>
+        <option value="France"> France </option>
+        <option value="Netherlands"> Netherlands </option>
+        <option value="Norway"> Norway </option>
+        <option value="Denmark"> Denmark </option>
+        <option value="Australia"> Australia </option>
+        <option value="New Zealand"> New Zealand </option>
+        <option value="United States"> United States </option>
+        <option value="Mexico"> Mexico </option>
+        <option value="Brazil"> Brazil </option>
+      </select>
+      Language: <select name="new_language" id="new_language">
+        <option value="English"> English </option>
+        <option value="High German"> High German </option>
+        <option value="Norwegian"> Norwegian </option>
+        <option value="French"> French </option>
+      </select>
+      Description: <input type="text" id="new_description" name="new_description">
+
+      <br>
       <button onclick="logout()"> Log out </button>
       <br>
     </div>
