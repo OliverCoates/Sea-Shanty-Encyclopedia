@@ -13,29 +13,39 @@
     <div id="AdminPanel" class="AdminPanel">
       <p> Admin Panel</p>
       <p> Add a new shanty </p>
-      Name: <input type="text" id="new_name" name="new_name">
-      Alternative name: <input type="text" id="new_altName" name="new_altName">
-      Country of Origin: <select name="new_country" id="new_country"> <!-- This is inefficent but i will work for now -->
-        <option value="United Kingdom"> United Kingdom </option>
-        <option value="Germany"> Germany </option>
-        <option value="France"> France </option>
-        <option value="Netherlands"> Netherlands </option>
-        <option value="Norway"> Norway </option>
-        <option value="Denmark"> Denmark </option>
-        <option value="Australia"> Australia </option>
-        <option value="New Zealand"> New Zealand </option>
-        <option value="United States"> United States </option>
-        <option value="Mexico"> Mexico </option>
-        <option value="Brazil"> Brazil </option>
-      </select>
-      Language: <select name="new_language" id="new_language">
-        <option value="English"> English </option>
-        <option value="High German"> High German </option>
-        <option value="Norwegian"> Norwegian </option>
-        <option value="French"> French </option>
-      </select>
-      Description: <input type="text" id="new_description" name="new_description">
-
+      <form method="POST" action="/">
+        Name: <input type="text" id="new_name" name="new_name">
+        Alternative name: <input type="text" id="new_altName" name="new_altName">
+        Country of Origin: <select name="new_country" id="new_country"> <!-- This is inefficent but i will work for now -->
+          <option value="United Kingdom"> United Kingdom </option>
+          <option value="Germany"> Germany </option>
+          <option value="France"> France </option>
+          <option value="Netherlands"> Netherlands </option>
+          <option value="Norway"> Norway </option>
+          <option value="Denmark"> Denmark </option>
+          <option value="Australia"> Australia </option>
+          <option value="New Zealand"> New Zealand </option>
+          <option value="United States"> United States </option>
+          <option value="Mexico"> Mexico </option>
+          <option value="Brazil"> Brazil </option>
+        </select>
+        Language: <select name="new_language" id="new_language">
+          <option value="English"> English </option>
+          <option value="High German"> High German </option>
+          <option value="Norwegian"> Norwegian </option>
+          <option value="French"> French </option>
+        </select>
+        Description: <input type="text" id="new_description" name="new_description">
+        <input type="submit" value="Add">
+      </form>
+      <br>
+      <form method="POST" action="/delete">
+        <select name="delete_country" id="delete_country">
+          {% for shanty in shantys %}
+            <option value="{{shanty.Name}}"> {{shanty.Name}} </p>
+          {% endfor %}
+        <input type="submit" value="Delete">
+      </form>
       <br>
       <button onclick="logout()"> Log out </button>
       <br>
@@ -45,10 +55,10 @@
     <div class="entry">
       <button class="btn" onclick="dropdown('box1')">{{shanty.Name}}</button>
         <p> </p>
-        <p class="dropdownText"> Also known as: {{shanty.AltName}}</p>
-        <p class="dropdownText"> Country of origin: {{shanty.Country}}</p>
+        <p class="dropdownText"> Also known as: {{shanty.Alternative_Names}}</p>
+        <p class="dropdownText"> Country of origin: {{shanty.Country_Origin}}</p>
         <p class="dropdownText"> Language: {{shanty.Language}}</p>
-        <p class="dropdownText"> Description: {{shanty.Desc}}</p>
+        <p class="dropdownText"> Description: {{shanty.Description}}</p>
         <p class="dropdownText"> Lyrics: </p>
     </div>
     <p> </p>

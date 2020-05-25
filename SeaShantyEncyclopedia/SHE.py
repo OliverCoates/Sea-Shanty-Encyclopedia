@@ -12,14 +12,54 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+from sqlalchemy import Column, ForeignKey, Integer, Numeric, Table, Text
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql.sqltypes import NullType
+from flask_sqlalchemy import SQLAlchemy
 
-class seashanties(db.Model):
-    ID = db.Column(db.Integer(), primary_key=True,)
-    Name = db.Column(db.String(),unique=True)
-    AltName = db.Column("Alternative_Names",db.String(),unique=True)
-    Desc = db.Column("Description",db.String())
-    Language = db.Column("Language",db.String(),db.ForeignKey("Language.Name"))
-    Country = db.Column("Country_Origin",db.String(), db.ForeignKey("Countries.Name"))
+
+db = SQLAlchemy()
+
+
+
+class Country(db.Model):
+    __tablename__ = 'Countries'
+
+    ID = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.Text, nullable=False, unique=True)
+
+
+
+class Language(db.Model):
+    __tablename__ = 'Language'
+
+    ID = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.Text, unique=True)
+
+
+
+class Seashanty(db.Model):
+    __tablename__ = 'seashanties'
+
+    ID = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.Text,)
+    Alternative_Names = db.Column(db.Text)
+    Country_Origin = db.Column(db.ForeignKey('Countries.Name'))
+    Language = db.Column(db.ForeignKey('Language.Name'))
+    Description = db.Column(db.Text)
+    Lyrics = db.Column(db.Text)
+
+    Country = db.relationship('Country', primaryjoin='Seashanty.Country_Origin == Country.Name', backref='seashanties')
+    Language1 = db.relationship('Language', primaryjoin='Seashanty.Language == Language.Name', backref='seashanties')
+
+
+
+#t_sqlite_sequence = db.Table(
+#    'sqlite_sequence',
+#    db.Column('name', db.NullType),
+#    db.Column('seq', db.NullType)
+#)
+
 
 print("")
 print("Database Sucessfully loaded.")
@@ -28,11 +68,29 @@ print("")
 @app.route('/', methods=["GET","POST"])
 def home():
     shantys = None
-    if request.form:
-        shanty = seashanties(ID=request.form.get("ID"),Name=request.form.get("Name"),AltName=request.form.get("Alternative_Names"), Desc=request.form.get("Description"),Country=request.form.get("Country"), Language=request.form.get("Language"))  # Get the data from the database and add them to the seashanties class
+    # For adding shanty
+    if request.method == "POST" and request.form:
+        print("! Attempting to add shanty")
+        shanty = Seashanty(
+            Name=request.form.get("new_name"),
+            Alternative_Names=request.form.get("new_altName"),
+            Description=request.form.get("new_description"),
+            Country_Origin=request.form.get("new_country"),
+            Language=request.form.get("new_language")
+        )  # Get the data from the database and add them to the seashanties class
         db.session.add(shanty)
         db.session.commit()
-    return render_template("home.html", shantys = seashanties.query.all())  # Return the html template
+        return redirect("/")
+    return render_template("home.html", shantys = Seashanty.query.all())  # Return the html template
+
+@app.route('/delete', methods=["POST"])
+def delete():
+    name = request.form.get("delete_country")
+    toDelete = Seashanty.query.filter_by(Name=name).first()
+    db.session.delete(toDelete)
+    db.session.commit()
+    return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
