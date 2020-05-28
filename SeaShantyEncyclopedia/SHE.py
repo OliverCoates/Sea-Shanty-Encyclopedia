@@ -48,6 +48,7 @@ class Seashanty(db.Model):
     Language = db.Column(db.ForeignKey('Language.Name'))
     Description = db.Column(db.Text)
     Lyrics = db.Column(db.Text)
+    AudioSource = db.Column(db.Text)
 
     Country = db.relationship('Country', primaryjoin='Seashanty.Country_Origin == Country.Name', backref='seashanties')
     Language1 = db.relationship('Language', primaryjoin='Seashanty.Language == Language.Name', backref='seashanties')
@@ -76,7 +77,8 @@ def home():
             Alternative_Names=request.form.get("new_altName"),
             Description=request.form.get("new_description"),
             Country_Origin=request.form.get("new_country"),
-            Language=request.form.get("new_language")
+            Language=request.form.get("new_language"),
+            AudioSource=request.form.get("new_audioSource")
         )  # Get the data from the database and add them to the seashanties class
         db.session.add(shanty)
         db.session.commit()

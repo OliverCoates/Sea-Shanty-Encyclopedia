@@ -36,6 +36,7 @@
           <option value="French"> French </option>
         </select>
         Description: <input type="text" id="new_description" name="new_description">
+        Audio Source: <input type="text" id="new_audioSource" name="new_audioSource">
         <input type="submit" value="Add">
       </form>
       <br>
@@ -66,6 +67,10 @@
         <p class="dropdownText"> Language: {{shanty.Language}}</p>
         <p class="dropdownText"> Description: {{shanty.Description}}</p>
         <p class="dropdownText"> Lyrics: </p>
+        <p class="dropdownText"> {{shanty.AudioSource}} </p>
+        <audio controls>
+          <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">
+        </audio>
     </div>
     <p> </p>
     {% endfor %}
