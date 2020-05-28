@@ -23,6 +23,12 @@ function logout() {
   input.style.display = 'block';
 }
 
+function areYouSure() {
+  var hiddenDiv = document.getElementById("deleteButton");
+  console.log(hiddenDiv);
+  hiddenDiv.style.display = 'block';
+}
+
 function dropdown(elementID) {
   var boxID = document.getElementById(elementID);
   //window.alert("Hello");

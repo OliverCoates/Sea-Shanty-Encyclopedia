@@ -9,7 +9,7 @@
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
 
-    <input type="text" id="Password" name="Password"><br>
+    <input type="password" id="Password" name="Password"><br>
     <div id="AdminPanel" class="AdminPanel">
       <p> Admin Panel</p>
       <p> Add a new shanty </p>
@@ -42,9 +42,15 @@
       <form method="POST" action="/delete">
         <select name="delete_country" id="delete_country">
           {% for shanty in shantys %}
-            <option value="{{shanty.Name}}"> {{shanty.Name}} </p>
+            <option value="{{shanty.Name}}"> {{shanty.Name}} </option>
           {% endfor %}
-        <input type="submit" value="Delete">
+        </select>
+
+        <button id="safetyButton" onclick="areYouSure()" type="button"> Delete </button>
+        <div class="hide" id="deleteButton">
+          <input type="submit" value="Are you sure?">
+        </div>
+
       </form>
       <br>
       <button onclick="logout()"> Log out </button>
