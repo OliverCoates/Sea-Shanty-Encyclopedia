@@ -4,17 +4,14 @@ window.onkeyup = keyup;  // Listener for when a key is pressed
 
 var passwordTextValue;
 
-function keyup(e) {
-  passwordTextValue = e.target.value;
-  if (e.keyCode == 13 && passwordTextValue == "Password")  { // Check for when enter pressed
-    //window.alert("Hey!");
-    e.target.value = ""; // Reset what is in the password field
-    var panel = document.getElementById("AdminPanel");
-    var input = document.getElementById("Password");
-    panel.style.display = 'block';
-    input.style.display = 'none';
-  }
-}
+document.addEventListener('DOMContentLoaded', function() {  // This function runs when the page is loaded.
+    if({{session.admin}} == "yes") {
+      var panel = document.getElementById("AdminPanel");
+      var input = document.getElementById("Password");
+      panel.style.display = 'block';
+      input.style.display = 'none';
+    }
+}, false);
 
 function logout() {
   var panel = document.getElementById("AdminPanel");

@@ -3,11 +3,13 @@ from flask import Flask
 from flask  import render_template
 from flask import request
 from flask import redirect
+from flask import session
 from flask_sqlalchemy import SQLAlchemy
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "SeaShantyDatabase.db"))
 app = Flask(__name__)
+app.secret_key = "Oh for just one time I would take the Northwest passage"
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -19,7 +21,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 db = SQLAlchemy()
-
 
 
 class Country(db.Model):
@@ -62,6 +63,7 @@ class Seashanty(db.Model):
 #)
 
 
+
 print("")
 print("Database Sucessfully loaded.")
 print("")
@@ -84,6 +86,20 @@ def home():
         db.session.commit()
         return redirect("/")
     return render_template("home.html", shantys = Seashanty.query.all())  # Return the html template
+
+@app.route('/login', methods=["GET","POST"])
+def login():
+    if request.method == 'POST':
+        if 'Test' == request.form['input']:
+            session['admin'] = 'yes'
+            return redirect("/")
+        return render_template("login.html")
+    return render_template("login.html")
+
+@app.route('/logout', methods=["GET","POST"])
+def logout():
+    session['admin'] = "no"
+    return redirect("/")
 
 @app.route('/delete', methods=["POST"])
 def delete():
