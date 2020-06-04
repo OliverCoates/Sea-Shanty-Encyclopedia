@@ -49,13 +49,22 @@
               <option value="{{shanty.Name}}"> {{shanty.Name}} </option>
             {% endfor %}
           </select>
-
           <button id="safetyButton" onclick="areYouSure()" type="button"> Delete </button>
           <div class="hide" id="deleteButton">
             <input type="submit" value="Are you sure?">
           </div>
-
         </form>
+        <br>
+        <form method="POST" action="/update">
+          <p> Update: </p>
+          <select name="update_name" id="update_name">
+            {% for shanty in shantys %}
+              <option value="{{shanty.Name}}"> {{shanty.Name}} </option>
+            {% endfor %}
+          </select>
+          <input type="submit" value="Modify this shanty">
+        </form>
+        {{session['update']}}
         <br>
         <form method="POST" action="/logout">
           <input type="submit" value="Log Out">

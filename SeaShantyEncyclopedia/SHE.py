@@ -101,6 +101,16 @@ def logout():
     session['admin'] = "no"
     return redirect("/")
 
+@app.route('/update', methods=["GET","POST"])
+def update():
+    session['update'] = request.form.get("update_name")
+    return render_template("update.html", shantys = Seashanty.query.filter(Seashanty.Name == session['update']))
+
+@app.route('/finishUpdate', methods=["GET","POST"])
+def finishUpdate():
+    
+    return redirect("/")
+
 @app.route('/delete', methods=["POST"])
 def delete():
     name = request.form.get("delete_country")
