@@ -14,8 +14,11 @@
         <p class="dropdownText"> Also known as: <input type="text" id="updated_altNames" name="updated_altNames" value="{{shanty.Alternative_Names}}"></p>
         <p class="dropdownText"> Country of origin: <input type="text" id="updated_country" name="updated_country" value="{{shanty.Country_Origin}}"></p>
         <p class="dropdownText"> Language: <input type="text" id="updated_language" name="updated_language" value="{{shanty.Language}}"></p>
-        <p class="dropdownText"> Description: <input type="text" id="updated_language" name="updated_language" value="{{shanty.Description}}"> </p>
+        <!-- <p class="dropdownText"> Description: <input type="text" size="200" id="updated_description" name="updated_description" value="{{shanty.Description}}"> </p> -->
+        <p class="dropdownText"> Description: </p>
+        <textarea id="updated_description" name="updated_description" cols="90" rows="10">{{shanty.Description}} </textarea>
         <p class="dropdownText"> Lyrics: </p>
+        <textarea name="test" cols="40" rows="5"></textarea>
         <p> Audio Source: <input type="text" id="updated_audioSource" name="updated_audioSource" value="{{shanty.AudioSource}}"> </p>
         <audio controls>
           <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">

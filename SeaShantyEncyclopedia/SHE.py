@@ -108,7 +108,21 @@ def update():
 
 @app.route('/finishUpdate', methods=["GET","POST"])
 def finishUpdate():
-    
+    updated_name = request.form.get("updated_name")
+    updated_altNames = request.form.get("updated_altNames")
+    updated_country = request.form.get("updated_country")
+    updated_language = request.form.get("updated_language")
+    updated_description = request.form.get("updated_description")
+
+    shanty = Seashanty.query.filter(Seashanty.Name == session['update']).first() # Get the name of the shanty that is being updated
+
+    shanty.Name = updated_name
+    shanty.Alternative_Names = updated_altNames
+    shanty.Country_origin = updated_country
+    shanty.Language = updated_language
+    shanty.Description = updated_description
+
+    db.session.commit()
     return redirect("/")
 
 @app.route('/delete', methods=["POST"])
