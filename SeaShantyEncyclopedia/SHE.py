@@ -80,7 +80,8 @@ def home():
             Description=request.form.get("new_description"),
             Country_Origin=request.form.get("new_country"),
             Language=request.form.get("new_language"),
-            AudioSource=request.form.get("new_audioSource")
+            AudioSource=request.form.get("new_audioSource"),
+            Lyrics=request.form.get("new_lyrics")
         )  # Get the data from the database and add them to the seashanties class
         db.session.add(shanty)
         db.session.commit()
@@ -113,6 +114,8 @@ def finishUpdate():
     updated_country = request.form.get("updated_country")
     updated_language = request.form.get("updated_language")
     updated_description = request.form.get("updated_description")
+    updated_lyrics = request.form.get("updated_lyrics")
+    updated_audiosource = request.form.get("updated_audioSource")
 
     shanty = Seashanty.query.filter(Seashanty.Name == session['update']).first() # Get the name of the shanty that is being updated
 
@@ -121,6 +124,8 @@ def finishUpdate():
     shanty.Country_origin = updated_country
     shanty.Language = updated_language
     shanty.Description = updated_description
+    shanty.Lyrics = updated_lyrics
+    shanty.AudioSource = updated_audiosource
 
     db.session.commit()
     return redirect("/")

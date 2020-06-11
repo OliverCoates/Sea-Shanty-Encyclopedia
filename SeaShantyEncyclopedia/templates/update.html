@@ -18,7 +18,7 @@
         <p class="dropdownText"> Description: </p>
         <textarea id="updated_description" name="updated_description" cols="90" rows="10">{{shanty.Description}} </textarea>
         <p class="dropdownText"> Lyrics: </p>
-        <textarea name="test" cols="40" rows="5"></textarea>
+        <textarea name="updated_lyrics" id="updated_lyrics" cols="60" rows="15">{{shanty.Lyrics}}</textarea>
         <p> Audio Source: <input type="text" id="updated_audioSource" name="updated_audioSource" value="{{shanty.AudioSource}}"> </p>
         <audio controls>
           <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">

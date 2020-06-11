@@ -8,18 +8,23 @@
 
   <body>
     <p class="title">Sea Shanty Encyclopedia   </p>
+    {% if session.admin =='yes'%}
+    <p> You are logged in! </p>
+    {% else %}
     <form method="" action="/login">
       <input type="submit" value="Log in">
     </form>
-    <br>
+    {% endif %}
+
     {% if session.admin == 'yes' %}
+    <div class="entry">
       <div id="AdminPanel" class="AdminPanel">
         <p> Admin Panel</p>
         <p> Add a new shanty </p>
         <form method="POST" action="/">
-          Name: <input type="text" id="new_name" name="new_name">
-          Alternative name: <input type="text" id="new_altName" name="new_altName">
-          Country of Origin: <select name="new_country" id="new_country"> <!-- This is inefficent but i will work for now -->
+          <p> Name: <input type="text" id="new_name" name="new_name"> </p>
+          <p> Alternative name: <input type="text" id="new_altName" name="new_altName"> </p>
+          <p> Country of Origin: <select name="new_country" id="new_country"> </p> <!-- This is inefficent but i will work for now -->
             <option value="United Kingdom"> United Kingdom </option>
             <option value="Germany"> Germany </option>
             <option value="France"> France </option>
@@ -32,14 +37,17 @@
             <option value="Mexico"> Mexico </option>
             <option value="Brazil"> Brazil </option>
           </select>
-          Language: <select name="new_language" id="new_language">
+          <p> Language: <select name="new_language" id="new_language"> </p>
             <option value="English"> English </option>
             <option value="High German"> High German </option>
             <option value="Norwegian"> Norwegian </option>
             <option value="French"> French </option>
           </select>
-          Description: <input type="text" id="new_description" name="new_description">
-          Audio Source: <input type="text" id="new_audioSource" name="new_audioSource">
+          <p> Description: </p>
+          <textarea id="new_description" name="new_description" cols="90" rows="10"></textarea>
+          <p> Lyrics </p>
+          <textarea id="new_lyrics" name="new_lyrics" cols="60" rows="15"></textarea>
+          <p> Audio Source: <input type="text" id="new_audioSource" name="new_audioSource"> </p>
           <input type="submit" value="Add">
         </form>
         <br>
@@ -64,14 +72,15 @@
           </select>
           <input type="submit" value="Modify this shanty">
         </form>
-        {{session['update']}}
         <br>
         <form method="POST" action="/logout">
           <input type="submit" value="Log Out">
         </form>
-        <br>
       </div>
+    </div>
     {% endif %}
+
+    <br>
 
     {% for shanty in shantys %}
     <div class="entry">
@@ -82,6 +91,8 @@
         <p class="dropdownText"> Language: {{shanty.Language}}</p>
         <p class="dropdownText"> Description: {{shanty.Description}}</p>
         <p class="dropdownText"> Lyrics: </p>
+        <textarea readonly cols="60" rows="15"> {{shanty.Lyrics}} </textarea>
+        <br>
         <audio controls>
           <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">
         </audio>
