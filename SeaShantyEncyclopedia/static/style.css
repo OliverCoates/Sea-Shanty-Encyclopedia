@@ -4,13 +4,18 @@
 :root {
   --c1: #DCDCDD; /* Soft grey - background color */
   --c2: #2A2B2A; /* Softish black - Fonts and borders */
-  --c3: #1985A1; /* Navy Blue - Highlights*/
+  --c3: #58829D; /* Navy Blue - Highlights*/
+  --c4: #F5F5F5; /* White */
 }
 
 body {
-  background-color: var(--c1);
+  background-color: var(--c4);
   font-family: Hind;
-  color: var(--c2);
+  color: var(--c3);
+}
+
+.collapsed .info {
+  display: none;
 }
 
 .hide {
@@ -39,21 +44,19 @@ body {
   border: solid;
   border-width: 2px;
   border-radius: 5px;
-  color: var(--c2);
   font-size: 20px;
-  background-color: var(--c1);
   border-color: rgba(42, 43, 42, 0.75);
   padding: 5px;
   width: 150px;
   text-align: left;
   text-decoration: none;
   outline: none;
+  color:var(--c3);
+  background-color:white;
 }
 
 .btn:hover {
-  opacity: 1;
-  color: var(--c3);
-  border-color: var(--c3);
+  color:var(--c3);
 }
 
 .entry {
@@ -64,4 +67,5 @@ body {
   border-radius: 5px;
   border-color: black;
   border-width: 2px;
+  background-color:white;
 }

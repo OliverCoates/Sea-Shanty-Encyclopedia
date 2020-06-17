@@ -1,17 +1,4 @@
-//query select all
 
-window.onkeyup = keyup;  // Listener for when a key is pressed
-
-var passwordTextValue;
-
-document.addEventListener('DOMContentLoaded', function() {  // This function runs when the page is loaded.
-    if({{session.admin}} == "yes") {
-      var panel = document.getElementById("AdminPanel");
-      var input = document.getElementById("Password");
-      panel.style.display = 'block';
-      input.style.display = 'none';
-    }
-}, false);
 
 function logout() {
   var panel = document.getElementById("AdminPanel");
@@ -35,3 +22,18 @@ function dropdown(elementID) {
     boxID.style.display = "none";
   }
 }
+
+document.querySelectorAll(".entry .btn").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    event.target.parentElement.classList.toggle("collapsed")
+  })
+});
+
+// let selector = document.querySelectorAll(".entry");
+//
+// for (let element in selector) {
+//   console.log(selector[element]);
+//   selector[element].addEventListener("onclick", function(event) {
+//     console.log(event);
+//   })
+// }
