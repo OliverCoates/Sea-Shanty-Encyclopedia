@@ -8,13 +8,29 @@
 
   <body>
     <p class="title entry">Sea Shanty Encyclopedia   </p>
-    {% if session.admin =='yes'%}
-     <p></p>
-    {% else %}
-    <form method="" action="/login">
-      <input type="submit" value="Log in">
-    </form>
-    {% endif %}
+    <div class="navbar">
+      <table>
+        <tr>
+          <th>{% if session.admin =='yes'%}
+           <!-- Do nothing -->
+          {% else %}
+          <form method="" action="/login">
+            <input type="submit" class="smallButton" value="Log in">
+          </form>
+          {% endif %}</th>
+
+          <th> <a href="#Bitwa">goto</a> </th>
+
+          <th> <select name="goto">
+            {% for shanty in shantys %}
+              <option value="#{{shanty.Name}}"> {{shanty.Name}} </option>
+            {% endfor %}
+          </select> </th>
+
+          <th> <button id="gotoButton">Go to </button> </th>
+        </tr>
+      </table>
+    </div>
 
     {% if session.admin == 'yes' %}
     <div class="entry">
@@ -83,8 +99,6 @@
     </div>
     {% endif %}
 
-    <br>
-
     {% for shanty in shantys %}
     <div class="entry collapsed">
       <button class="btn">{{shanty.Name}}</button>
@@ -101,12 +115,8 @@
             <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">
           </audio>
         </div>
+        <!-- <a name="{{shanty.Name}}"> -->
     </div>
-    <p> </p>
     {% endfor %}
-
-
-
-
   </body>
 </html>
