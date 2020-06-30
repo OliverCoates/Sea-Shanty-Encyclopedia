@@ -29,8 +29,12 @@ body {
 }
 
 .title {
-  font-size: 35px;
-  margin-bottom: 5px;
+  font-size: 50px;
+  margin: 0px;
+}
+
+.column {
+  float: left;
 }
 
 .navbar {
@@ -54,6 +58,11 @@ body {
   width:40px;
 }
 
+.smallImage {
+  width: 70px;
+  height: 70px;
+  padding-right: 10px;
+}
 .dropdown {
   font-size: 20px;
   display: none;
@@ -86,6 +95,10 @@ body {
 
 .btn:hover {
   color:var(--c3);
+}
+
+.greyText {
+  color:var(--2);
 }
 
 .smallButton {

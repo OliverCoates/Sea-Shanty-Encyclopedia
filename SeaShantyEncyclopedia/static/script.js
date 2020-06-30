@@ -1,3 +1,6 @@
+document.querySelector("#gotoButton").addEventListener("click", function(event){
+  window.location = document.querySelector("select[name=goto]").value;
+});
 
 
 function logout() {

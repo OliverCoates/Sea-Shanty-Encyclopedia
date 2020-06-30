@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="/static/style.css">
     <script defer src="/static/script.js"> </script>
     <title>Sea Shanty Encyclopedia</title>
   </head>
 
   <body>
-    <p class="title entry">Sea Shanty Encyclopedia   </p>
+    <div class="entry">
+      <div class="column">
+        <img src="/static/ds.gif" class="smallImage" alt="Dancing sailor">
+      </div>
+      <div>
+        <p class="title">Sea Shanty Encyclopedia   </p>
+      </div>
+    </div>
     <div class="navbar">
       <table>
         <tr>
@@ -19,11 +34,9 @@
           </form>
           {% endif %}</th>
 
-          <th> <a href="#Bitwa">goto</a> </th>
-
           <th> <select name="goto">
             {% for shanty in shantys %}
-              <option value="#{{shanty.Name}}"> {{shanty.Name}} </option>
+              <option value="#{{shanty.Name|replace(' ','_') }}"> {{shanty.Name}} </option>
             {% endfor %}
           </select> </th>
 
@@ -100,16 +113,16 @@
     {% endif %}
 
     {% for shanty in shantys %}
-    <div class="entry collapsed">
+    <div class="entry collapsed" id="{{shanty.Name|replace(' ','_')}}">
       <button class="btn">{{shanty.Name}}</button>
         <div class="info">
           <p> </p>
-          <p class="dropdownText"> Also known as: {{shanty.Alternative_Names}}</p>
-          <p class="dropdownText"> Country of origin: {{shanty.Country_Origin}}</p>
-          <p class="dropdownText"> Language: {{shanty.Language}}</p>
-          <p class="dropdownText"> Description: {{shanty.Description}}</p>
-          <p class="dropdownText"> Lyrics: </p>
-          <textarea readonly cols="60" rows="15"> {{shanty.Lyrics}} </textarea>
+          <p class="dropdownText"> <b>Also known as:</b> {{shanty.Alternative_Names}}</p>
+          <p class="dropdownText"> <b>Country of origin:</b> {{shanty.Country_Origin}}</p>
+          <p class="dropdownText"> <b>Language:</b> {{shanty.Language}}</p>
+          <p class="dropdownText"> <b>Description:</b> {{shanty.Description}}</p>
+          <p class="dropdownText"> <b>Lyrics:</b> </p>
+          <textarea readonly cols="60" rows="15">{{shanty.Lyrics}}</textarea>
           <br>
           <audio controls>
             <source src="/static/{{shanty.AudioSource}}" type="audio/mpeg">
@@ -118,5 +131,6 @@
         <!-- <a name="{{shanty.Name}}"> -->
     </div>
     {% endfor %}
+
   </body>
 </html>

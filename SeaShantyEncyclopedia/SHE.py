@@ -129,7 +129,7 @@ def finishUpdate():
 
     db.session.commit()
     return redirect("/")
-
+    
 @app.route('/delete', methods=["POST"])
 def delete():
     name = request.form.get("delete_country")
