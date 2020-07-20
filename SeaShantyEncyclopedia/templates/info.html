@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/static/style.css">
+    <script defer src="/static/script.js"> </script>
+    <title>Sea Shanty Encyclopedia</title>
+  </head>
+
+  <body>
+    <div class="entry">
+      <div class="column">
+        <img src="/static/ds.gif" class="smallImage" alt="Dancing sailor">
+      </div>
+      <div>
+        <p class="title">Sea Shanty Encyclopedia   </p>
+      </div>
+    </div>
+    <div class="navbar">
+      <table>
+        <tr>
+          <th>{% if session.admin =='yes'%}
+           <!-- Do nothing -->
+          {% else %}
+          <form method="" action="/login">
+            <input type="submit" class="smallButton" value="Log in">
+          </form>
+          {% endif %}</th>
+
+          <th> <form method="" action="/gotoShanty">
+            <input type="submit" class="smallButton" value="Shanties">
+          </form> </th>
+
+          <th> <form method="" action="/gotoInfo">
+            <input type="submit" class="smallButton" value="What are shanties?">
+          </form> </th>
+        </tr>
+
+      </table>
+    </div>
+
+    <div>
+      <div class="entry">
+        <p> "Gone are the limewalks of yesteryear, with their bowry roads and paradise streets.
+          Gone are the wooden ships with their canvas sails and the shanty men, their ballads
+          songs and teals. But the seas are still here. And the voices are still singing, and
+          the music of the squeezebox fills the air. The wind is in the rigging. Put not your
+          trust in the shanty man, but in the shanties." </p>
+        <br>
+        <p> What are shanties? </p>
+        <p> Sea shanties are </p>
+      </div>
+    </div>
+
+  </body>
+</html>

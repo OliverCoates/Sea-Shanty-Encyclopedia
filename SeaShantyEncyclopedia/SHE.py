@@ -129,7 +129,7 @@ def finishUpdate():
 
     db.session.commit()
     return redirect("/")
-    
+
 @app.route('/delete', methods=["POST"])
 def delete():
     name = request.form.get("delete_country")
@@ -138,6 +138,13 @@ def delete():
     db.session.commit()
     return redirect("/")
 
+@app.route('/gotoShanty', methods=["GET","POST"])
+def gotoShanty():
+    return render_template("home.html", shantys = Seashanty.query.all())  # Return the html template
+
+@app.route('/gotoInfo', methods=["GET","POST"])
+def gotoInfo():
+    return render_template("info.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
