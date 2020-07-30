@@ -26,13 +26,6 @@
     <div class="navbar">
       <table>
         <tr>
-          <th>{% if session.admin =='yes'%}
-           <!-- Do nothing -->
-          {% else %}
-          <form method="" action="/login">
-            <input type="submit" class="smallButton" value="Log in">
-          </form>
-          {% endif %}</th>
 
           <th> <form method="" action="/gotoShanty">
             <input type="submit" class="smallButton" value="Shanties">
@@ -41,6 +34,14 @@
           <th> <form method="" action="/gotoInfo">
             <input type="submit" class="smallButton" value="What are shanties?">
           </form> </th>
+
+          <th>{% if session.admin =='yes'%}
+           <!-- Do nothing -->
+          {% else %}
+          <form method="" action="/login">
+            <input type="submit" class="smallButton" value="Log in">
+          </form>
+          {% endif %}</th>
         </tr>
 
       </table>
@@ -82,7 +83,7 @@
            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
           </div>
-          
+
         <p> "To me!" is a common phrase in found in nearly all traditional sea shanties. The "To Me!"
           was the call from the shantyman (The man leading the shanty) for the rest of the singers to
           sing out the refrain </p>

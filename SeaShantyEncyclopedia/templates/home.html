@@ -26,6 +26,14 @@
     <div class="navbar">
       <table>
         <tr>
+          <th> <form method="" action="/gotoShanty">
+            <input type="submit" class="smallButton" value="Shanties">
+          </form> </th>
+
+          <th> <form method="" action="/gotoInfo">
+            <input type="submit" class="smallButton" value="What are shanties?">
+          </form> </th>
+          
           <th>{% if session.admin =='yes'%}
            <!-- Do nothing -->
           {% else %}
@@ -42,13 +50,7 @@
 
           <th> <button id="gotoButton"> Go to </button> </th>
 
-          <th> <form method="" action="/gotoShanty">
-            <input type="submit" class="smallButton" value="Shanties">
-          </form> </th>
 
-          <th> <form method="" action="/gotoInfo">
-            <input type="submit" class="smallButton" value="What are shanties?">
-          </form> </th>
 
         </tr>
       </table>
