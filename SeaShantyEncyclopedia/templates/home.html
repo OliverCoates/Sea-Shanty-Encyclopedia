@@ -33,7 +33,7 @@
           <th> <form method="" action="/gotoInfo">
             <input type="submit" class="smallButton" value="What are shanties?">
           </form> </th>
-          
+
           <th>{% if session.admin =='yes'%}
            <!-- Do nothing -->
           {% else %}
@@ -42,7 +42,7 @@
           </form>
           {% endif %}</th>
 
-          <th> <select name="goto">
+          <th> <select class="dropdownselect" name="goto">
             {% for shanty in shantys %}
               <option value="#{{shanty.Name|replace(' ','_') }}"> {{shanty.Name}} </option>
             {% endfor %}

@@ -20,6 +20,11 @@ body {
   color: var(--c3);
 }
 
+.dropdownselect {
+  position: relative;
+  font-family: Hind;
+}
+
 .collapsed .info {
   display: none;
 }
