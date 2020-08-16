@@ -145,7 +145,10 @@ body {
   background-color:var(--c4);
   color:var(--c3);
   border-color: var(--c2);
-  padding:3px;
+  font-size: 15px;
+  padding:8px;
+  border-width: 2px;
+  border-radius: 4px;
 }
 
 .entry {

@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <!-- Title -->
     <div class="entry">
       <div class="column">
         <img src="/static/ds.gif" class="smallImage" alt="Dancing sailor">
@@ -23,34 +24,32 @@
         <p class="title">Sea Shanty Encyclopedia   </p>
       </div>
     </div>
-    <div class="navbar">
+    <div class="navbar"> <!-- Navbar -->
       <table>
         <tr>
           <th> <form method="" action="/gotoShanty">
-            <input type="submit" class="smallButton" value="Shanties">
+            <input type="submit" class="smallButton" value="Shanties"> <!-- Go to main page -->
           </form> </th>
 
           <th> <form method="" action="/gotoInfo">
-            <input type="submit" class="smallButton" value="What are shanties?">
+            <input type="submit" class="smallButton" value="What are shanties?"> <!-- Go to info page -->
           </form> </th>
 
           <th>{% if session.admin =='yes'%}
            <!-- Do nothing -->
           {% else %}
           <form method="" action="/login">
-            <input type="submit" class="smallButton" value="Log in">
+            <input type="submit" class="smallButton" value="Log in"> <!-- Log in -->
           </form>
           {% endif %}</th>
 
-          <th> <select class="dropdownselect" name="goto">
+            <th> <select class="dropdownselect" name="goto">  <!-- Go down  -->
             {% for shanty in shantys %}
               <option value="#{{shanty.Name|replace(' ','_') }}"> {{shanty.Name}} </option>
             {% endfor %}
           </select> </th>
 
-          <th> <button class="smallButton" id="gotoButton"> Go to </button> </th>
-
-
+          <th> <button class="smallButton" id="gotoButton"> Go to </button> </th> <!-- Scroll to a shanty, Done in javascript -->
 
         </tr>
       </table>
