@@ -9,7 +9,12 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/static/style.css">
+    <!-- Choose the style sheet that relates to the theme -->
+    {% if session.theme == 'dark' %}
+      <link rel="stylesheet" href=""> <!-- Dark theme -->
+    {% else %}
+      <link rel="stylesheet" href="/static/style.css"> <!-- Light theme -->
+    {% endif %}
     <script defer src="/static/script.js"> </script>
     <title>Sea Shanty Encyclopedia</title>
   </head>
