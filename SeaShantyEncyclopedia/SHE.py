@@ -156,7 +156,7 @@ def changeTheme():
         session['theme'] = "light"
     else:
         session['theme'] = "dark"
-    return redirect("/")
+    return redirect("/")  # < This needs to be fixed
 
 if __name__ == "__main__":
     app.run(debug=True)

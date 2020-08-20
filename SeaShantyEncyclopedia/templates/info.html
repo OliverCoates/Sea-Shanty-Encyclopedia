@@ -9,7 +9,12 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/static/style.css">
+    <!-- Choose the style sheet that relates to the theme -->
+    {% if session.theme == 'dark' %}
+      <link rel="stylesheet" href="/static/styleDark.css"> <!-- Dark theme -->
+    {% else %}
+      <link rel="stylesheet" href="/static/style.css"> <!-- Light theme -->
+    {% endif %}
     <script defer src="/static/script.js"> </script>
     <title>Sea Shanty Encyclopedia</title>
   </head>
@@ -42,6 +47,15 @@
             <input type="submit" class="smallButton" value="Log in">
           </form>
           {% endif %}</th>
+
+          <th> <form method="" action="/changeTheme">
+            {% if session.theme == 'light' %} <!-- These two buttons are only here for visuals, the changing between light and dark is handled in the code -->
+                <input type="submit" class="smallButton" value="Dark">
+            {% else %}
+                <input type="submit" class="smallButton" value="Light">
+            {% endif %}
+          </form>
+          </th>
         </tr>
 
       </table>

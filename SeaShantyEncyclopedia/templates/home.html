@@ -11,7 +11,7 @@
 
     <!-- Choose the style sheet that relates to the theme -->
     {% if session.theme == 'dark' %}
-      <link rel="stylesheet" href=""> <!-- Dark theme -->
+      <link rel="stylesheet" href="/static/styleDark.css"> <!-- Dark theme -->
     {% else %}
       <link rel="stylesheet" href="/static/style.css"> <!-- Light theme -->
     {% endif %}
@@ -62,6 +62,7 @@
             {% else %}
                 <input type="submit" class="smallButton" value="Light">
             {% endif %}
+          </form>
           </th>
         </tr>
       </table>

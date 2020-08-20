@@ -2,10 +2,11 @@
 
 /* Colors! https://coolors.co/2a2b2a-dcdcdd-3d5a6c-72a98f-1985a1 */
 :root {
-  --c1: #DCDCDD; /* Soft grey - background color */
-  --c2: #2A2B2A; /* Softish black - Fonts and borders */
-  --c3: #58829D; /* Navy Blue - Highlights*/
-  --c4: #F5F5F5; /* White */
+  --c1: #58829D; /* Hover color */
+  --c2: #58829D; /* navbar edges */
+  --c3: #F5F5F5; /* Font */
+  --c4: #2A2B2A; /* Background color */
+  --c5: #58829D; /* Edges */
 }
 
 html {
@@ -84,7 +85,7 @@ body {
   margin-left: 0px;
   border-style: solid;
   border-radius: 0px;
-  border-color: black;
+  border-color: var(--c5);
   border-width: 2px;
   background-color:var(--c4);
   padding-left:10px;
@@ -122,7 +123,8 @@ body {
   border-width: 2px;
   border-radius: 5px;
   font-size: 20px;
-  border-color: rgba(42, 43, 42, 0.75);
+  /*border-color: rgba(42, 43, 42, 0.75); */
+  border-color: var(--c2);
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -166,7 +168,7 @@ body {
   padding: 15px;
   border-style: solid;
   border-radius: 5px;
-  border-color: black;
+  border-color: var(--c5);
   border-width: 2px;
   background-color:var(--c4);
 }
