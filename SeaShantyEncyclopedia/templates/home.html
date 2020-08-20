@@ -51,6 +51,13 @@
 
           <th> <button class="smallButton" id="gotoButton"> Go to </button> </th> <!-- Scroll to a shanty, Done in javascript -->
 
+          <th> <form method="" action="/changeTheme">
+            {% if session.theme == 'light' %} <!-- These two buttons are only here for visuals, the changing between light and dark is handled in the code -->
+                <input type="submit" class="smallButton" value="Dark">
+            {% else %}
+                <input type="submit" class="smallButton" value="Light">
+            {% endif %}
+          </th>
         </tr>
       </table>
     </div>

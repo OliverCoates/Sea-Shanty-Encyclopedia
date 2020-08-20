@@ -135,6 +135,8 @@ body {
 
 .btn:hover {
   color:var(--c3);
+  background-color:var(--c1);
+  cursor:pointer;
 }
 
 .greyText {
@@ -149,6 +151,12 @@ body {
   padding:8px;
   border-width: 2px;
   border-radius: 4px;
+}
+
+.smallButton:hover {
+  background-color:var(--c1);
+  color:var(--c3);
+  cursor:pointer;
 }
 
 .entry {

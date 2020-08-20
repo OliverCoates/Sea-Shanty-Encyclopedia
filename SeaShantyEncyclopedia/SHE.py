@@ -55,6 +55,8 @@ print("")
 print("Database Sucessfully loaded.")
 print("")
 
+
+
 # Main page for the website
 @app.route('/', methods=["GET","POST"])
 def home():
@@ -146,6 +148,15 @@ def gotoShanty():
 @app.route('/gotoInfo', methods=["GET","POST"])
 def gotoInfo():
     return render_template("info.html")
+
+@app.route('/changeTheme', methods=["GET","POST"])
+def changeTheme():
+    currentTheme = session.get("theme", "light")
+    if currentTheme == "dark":
+        session['theme'] = "light"
+    else:
+        session['theme'] = "dark"
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
