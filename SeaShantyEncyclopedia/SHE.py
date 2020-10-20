@@ -78,7 +78,7 @@ def home():
         return redirect("/")
     return render_template("home.html", shantys = Seashanty.query.all())  # Return the html template, display it on the port
 
-# For loggin in as an admin
+# For loggin in as an admin,
 @app.route('/login', methods=["GET","POST"])
 def login():
     if request.method == 'POST':
